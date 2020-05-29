@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spend_tracker/pages/home/widgets/custom_text.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -16,9 +17,26 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: const Text(
-          'My First Page',
-          style: TextStyle(fontSize: 20),
+        child: Column(
+          children: <Widget>[
+            const Text(
+              'One',style: TextStyle(
+                fontSize: 40,
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline
+              ),
+              ),
+               const CustomText(
+              text:'Two',
+              ),
+               const Text(
+              'Three',
+              ),
+              Image.network('https://gravatar.com/avatar/1735fca48036474bb3e30abc295c1067',
+              height:200)
+           
+          ],
         ),
       ),
     );
