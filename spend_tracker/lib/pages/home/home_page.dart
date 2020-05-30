@@ -36,11 +36,15 @@ class HomePage extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Colors.green, Colors.white54, Colors.blueGrey,],
+                colors: [
+                  Colors.green,
+                  Colors.white54,
+                  Colors.blueGrey,
+                ],
                 stops: [0.85, 0.95, 1.0],
               ),
               boxShadow: [
-                BoxShadow(color: Colors.grey, offset: Offset(4, 4)),
+                BoxShadow(color: Colors.grey, offset: Offset(4, 4),),
               ],
               borderRadius: BorderRadius.all(
                 Radius.circular(5),
