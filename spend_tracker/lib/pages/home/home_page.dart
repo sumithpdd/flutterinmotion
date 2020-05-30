@@ -32,23 +32,7 @@ class HomePage extends StatelessWidget {
                 _BarLine(100,Colors.red,506),
                 _BarLine(400,Colors.green
                 ,1706),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 400,
-                      width: 100,
-                      color: Colors.green,
-                    ),
-                    Text(
-                      'Deposit',
-                    ),
-                    Text(
-                      '\$1709',
-                    ),
-                  ],
-                ),
+                 
               ],
             ),
           )
