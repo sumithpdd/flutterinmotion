@@ -37,3 +37,33 @@ Video 3.7:
 ### exercise
 
 <https://codepen.io/sumithpdd/pen/JjYgMpK>
+
+4.1:
+<https://api.flutter.dev/flutter/widgets/Column-class.html>
+<https://api.flutter.dev/flutter/widgets/Text-class.html>
+<https://api.flutter.dev/flutter/dart-ui/TextStyle-class.html>
+<https://api.flutter.dev/flutter/painting/EdgeInsets-class.html>
+<https://flutter.github.io/devtools>
+
+4.2:
+<https://api.flutter.dev/flutter/widgets/Container-class.html>
+<https://api.flutter.dev/flutter/painting/Decoration-class.html>
+<https://api.flutter.dev/flutter/painting/BoxDecoration-class.html>
+<https://api.flutter.dev/flutter/painting/BoxBorder-class.html>
+<https://api.flutter.dev/flutter/painting/BorderRadius-class.html>
+<https://api.flutter.dev/flutter/dart-ui/Radius-class.html>
+<https://api.flutter.dev/flutter/painting/Gradient-class.html>
+<https://api.flutter.dev/flutter/painting/LinearGradient-class.html>
+<https://api.flutter.dev/flutter/painting/BoxShadow-class.html>
+
+4.3:
+<https://iirokrankka.com/2018/12/11/splitting-widgets-to-methods-performance-antipattern><https://pub.dev/packages/charts_flutter>
+<https://api.flutter.dev/flutter/widgets/Row-class.html>
+<https://api.flutter.dev/flutter/widgets/MediaQuery-class.html>
+<https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html>
+<https://api.flutter.dev/flutter/widgets/Spacer-class.html>
+
+4.4:
+<https://api.flutter.dev/flutter/material/Scaffold-class.html>
+<https://api.flutter.dev/flutter/material/AppBar-class.html>
+<https://api.flutter.dev/flutter/widgets/Center-class.html>
