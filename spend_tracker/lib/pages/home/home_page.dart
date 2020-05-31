@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spend_tracker/pages/home/widgets/menu.dart';
+import 'package:spend_tracker/pages/items/item_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class HomePage extends StatelessWidget {
     var amount = "1,203.00";
     return Scaffold(
       appBar: AppBar(
-         title: const Text('Home'),
+        title: const Text('Home'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -23,21 +24,46 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           _TotalBudget(amount: amount),
           Container(
-            padding: EdgeInsets.only(bottom: 10),
+            padding: EdgeInsets.only(bottom: 50),
             height: MediaQuery.of(context).size.height - 200,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _BarLine(100,Colors.red,506),
-                _BarLine(400,Colors.green
-                ,1706),
-                 
+                _BarLine(100, Colors.red, 506),
+                _BarLine(400, Colors.green, 1706),
               ],
             ),
           )
         ],
       ),
+      floatingActionButton: PopupMenuButton(
+        child: Icon(
+          Icons.add_circle,
+          size: 60,
+          color: Theme.of(context).primaryColor,
+        ),
+        itemBuilder: (_) => [
+          PopupMenuItem(
+            value: 1,
+            child: const Text('Deposit'),
+          ),
+          PopupMenuItem(
+            value: 2,
+            child: const Text('Withdraw'),
+          ),
+        ],
+        onSelected: (int value) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => ItemPage(
+                      isDeposit: value == 1,
+                    )),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
