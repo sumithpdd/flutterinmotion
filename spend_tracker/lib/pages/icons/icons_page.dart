@@ -14,21 +14,23 @@ class IconsPage extends StatelessWidget {
         child: Wrap(
           spacing: 10,
           runSpacing: 10,
-          children: icons.map(
-            (iconData) => InkWell(
-              child: Opacity(
-                opacity: .7,
-                child: Icon(
-                  iconData,
-                  size: 60,
-                  color: color,
+          children: icons
+              .map(
+                (iconData) => InkWell(
+                  child: Opacity(
+                    opacity: .7,
+                    child: Icon(
+                      iconData,
+                      size: 60,
+                      color: color,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pop<IconData>(iconData);
+                  },
                 ),
-              ),
-              onTap: (){
-                Navigator.of(context).pop<IconData>(iconData);
-              },
-            ),
-          ).toList(),
+              )
+              .toList(),
         ),
       ),
     );

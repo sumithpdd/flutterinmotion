@@ -5,5 +5,5 @@ final routes = {
   '/': (BuildContext context) => HomePage(),
   '/accounts': (BuildContext context) => AccountsPage(),
   '/items': (BuildContext context) => ItemsPage(),
-  '/types': (BuildContext context) => TypePage(),
+  '/types': (BuildContext context) => TypesPage(),
 };
