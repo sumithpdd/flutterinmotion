@@ -122,3 +122,28 @@ Video 5.5: <https://api.flutter.dev/flutter/material/DropdownButtonFormField-cla
 ### view SQLLite dabase
 
 Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open source tool that allows you to create, edit, and design SQLite databases.
+
+6.1:
+<https://github.com/cornell19/spend_tracker> <https://pub.dev/packages/provider> <https://pub.dev/packages/sqflite> <https://pub.dev/packages/path_provider>
+
+6.2:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/State/initState.html> <https://api.dartlang.org/stable/2.4.0/dart-core/override-constant.html> <https://api.flutter.dev/flutter/widgets/IconData-class.html> <https://api.flutter.dev/flutter/material/TextFormField-class.html>
+
+6.3:
+<https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html> <https://api.flutter.dev/flutter/widgets/AsyncSnapshot-class.html> <https://api.flutter.dev/flutter/widgets/ListView-class.html> <https://api.flutter.dev/flutter/material/ListTile-class.html> <https://api.flutter.dev/flutter/material/CircularProgressIndicator-class.html>
+
+6.4:
+<https://api.flutter.dev/flutter/dart-core/Type-class.html>
+
+6.5:
+<https://www.sqlite.org/datatype3.html>
+<https://api.flutter.dev/flutter/widgets/State-class.html>
+
+6.6:
+<https://sqlitebrowser.org>
+
+6.7:
+https://api.flutter.dev/flutter/widgets/Dismissible-class.html
+
+6.8:
+<https://sqlitebrowser.org/>
