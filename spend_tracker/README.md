@@ -118,3 +118,7 @@ Video 5.5: <https://api.flutter.dev/flutter/material/DropdownButtonFormField-cla
 ### Exercise module 6 3
 
 <https://codepen.io/sumithpdd/pen/ExPYYoX>
+
+### view SQLLite dabase
+
+Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open source tool that allows you to create, edit, and design SQLite databases.

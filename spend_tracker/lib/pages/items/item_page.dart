@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:spend_tracker/database/db_provider.dart';
+import 'package:spend_tracker/models/account.dart';
+import 'package:spend_tracker/models/item.dart';
+import 'package:spend_tracker/models/item_type.dart';
 
 class ItemPage extends StatefulWidget {
   ItemPage({@required this.isDeposit});
@@ -12,11 +17,31 @@ class _ItemPageState extends State<ItemPage> {
   Map<String, dynamic> _formData = Map<String, dynamic>();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  List<Account> _accounts = [];
+  List<ItemType> _types = [];
   DateTime _dateTime = DateTime.now();
+  void _loadDropDownData() async {
+    var dbProvider = Provider.of<DbProvider>(context);
+    var accounts = await dbProvider.getAllAccounts();
+    var types = await dbProvider.getAllTypes();
+    if (!mounted) return;
+
+    setState(() {
+      _accounts = accounts;
+      _types = types;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _formData['isDeposit'] = widget.isDeposit;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loadDropDownData();
   }
 
   @override
@@ -30,6 +55,10 @@ class _ItemPageState extends State<ItemPage> {
               onPressed: () {
                 if (!_formKey.currentState.validate()) return;
                 _formKey.currentState.save();
+                var dbProvider = Provider.of<DbProvider>(context,listen: false);
+                _formData['date'] = DateFormat('MM/dd/yyyy').format(_dateTime);
+                var item = Item.fromMap(_formData);
+                dbProvider.createItem(item);
                 Navigator.of(context).pop();
               })
         ],
@@ -48,7 +77,7 @@ class _ItemPageState extends State<ItemPage> {
                   if (value.isEmpty) return 'Required';
                   return null;
                 },
-                onSaved: (String value) => _formData['Description'] = value,
+                onSaved: (String value) => _formData['description'] = value,
               ),
               TextFormField(
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -104,16 +133,14 @@ class _ItemPageState extends State<ItemPage> {
                 decoration: InputDecoration(
                   labelText: 'Account',
                 ),
-                items: [
-                  DropdownMenuItem(
-                    value: 1,
-                    child: const Text('Checking'),
-                  ),
-                  DropdownMenuItem(
-                    value: 2,
-                    child: const Text('Credit Card'),
-                  )
-                ],
+                items: _accounts
+                    .map(
+                      (a) => DropdownMenuItem<int>(
+                        value: a.id,
+                        child: Text(a.name),
+                      ),
+                    )
+                    .toList(),
                 validator: (int value) => value == null ? 'Required' : null,
                 onChanged: (int value) {
                   setState(() {
@@ -126,16 +153,14 @@ class _ItemPageState extends State<ItemPage> {
                 decoration: InputDecoration(
                   labelText: 'Type',
                 ),
-                items: [
-                  DropdownMenuItem(
-                    value: 1,
-                    child: const Text('Rent'),
-                  ),
-                  DropdownMenuItem(
-                    value: 2,
-                    child: const Text('Dinner'),
-                  )
-                ],
+                items: _types
+                    .map(
+                      (type) => DropdownMenuItem<int>(
+                        value: type.id,
+                        child: Text(type.name),
+                      ),
+                    )
+                    .toList(),
                 validator: (int value) => value == null ? 'Required' : null,
                 onChanged: (int value) {
                   setState(() {
