@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:spend_tracker/pages/accounts/account_page.dart';
 
 class AccountsPage extends StatelessWidget {
   @override
@@ -7,6 +7,20 @@ class AccountsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accounts'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            tooltip: 'add',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AccountPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: const Text('Accounts'),

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:spend_tracker/pages/types/type_page.dart';
 
 class TypesPage extends StatelessWidget {
   @override
@@ -7,6 +8,20 @@ class TypesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Types'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            tooltip: 'add',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TypePage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: const Text('Types'),

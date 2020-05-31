@@ -7,7 +7,7 @@ class Menu extends StatelessWidget {
 
     return SizedBox(
       width: 150,
-          child: Drawer(
+      child: Drawer(
         child: Column(
           children: <Widget>[
             Container(
@@ -26,7 +26,7 @@ class Menu extends StatelessWidget {
               title: 'Accounts',
               icon: Icons.account_balance,
               color: color,
-              onTap:()=> onNavigation(context,'/accounts'),
+              onTap: () => onNavigation(context, '/accounts'),
             ),
             Divider(
               height: 20,
@@ -36,7 +36,7 @@ class Menu extends StatelessWidget {
               title: 'Budget Items',
               icon: Icons.attach_money,
               color: color,
-              onTap:()=> onNavigation(context,'/items'),
+              onTap: () => onNavigation(context, '/items'),
             ),
             Divider(
               height: 20,
@@ -46,7 +46,7 @@ class Menu extends StatelessWidget {
               title: 'Types',
               icon: Icons.widgets,
               color: color,
-              onTap:()=> onNavigation(context,'/types'),
+              onTap: () => onNavigation(context, '/types'),
             ),
             Divider(
               height: 20,
@@ -57,7 +57,8 @@ class Menu extends StatelessWidget {
       ),
     );
   }
-  void onNavigation(BuildContext context,String uri){
+
+  void onNavigation(BuildContext context, String uri) {
     Navigator.of(context).pop();
     Navigator.of(context).pushNamed(uri);
   }
