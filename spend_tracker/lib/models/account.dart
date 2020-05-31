@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spend_tracker/support/icon_helper.dart';
 
 class Account {
   final int id;
@@ -6,6 +7,7 @@ class Account {
   final int codePoint;
   final double balance;
 
+  IconData get iconData => IconHelper.createIconData(codePoint);
   Account(
       {@required this.id,
       @required this.name,
