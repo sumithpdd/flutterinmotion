@@ -46,6 +46,7 @@ class _TypePageState extends State<TypePage> {
                 ),
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
+                  return null;
                 },
               ),
               TextFormField(
@@ -56,6 +57,7 @@ class _TypePageState extends State<TypePage> {
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
                   if (double.tryParse(value) == null) return 'Invalid number';
+                  return null;
                 },
                 onSaved: (String value) => _data['balance'] = value,
               )

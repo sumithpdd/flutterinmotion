@@ -71,3 +71,46 @@ Video 3.7:
 ### Exercise module 5
 
 <https://codepen.io/sumithpdd/pen/eYpqova>
+
+Video 5.1:
+<https://github.com/cornell19/spend_tracker>
+<https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html>
+<https://api.flutter.dev/flutter/material/TextFormField-class.html>
+<https://api.flutter.dev/flutter/material/TextField-class.html>
+<https://api.flutter.dev/flutter/widgets/FormField-class.html>
+<https://api.flutter.dev/flutter/material/InputDecorator-class.html>
+<https://api.flutter.dev/flutter/widgets/Form-class.html>
+<https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html>
+<https://api.flutter.dev/flutter/widgets/State-class.html>
+<https://api.flutter.dev/flutter/widgets/GlobalKey-class.html>
+<https://api.flutter.dev/flutter/widgets/FormState-class.html>
+
+Video 5.2:
+<https://github.com/cornell19/spend_tracker>
+<https://api.flutter.dev/flutter/material/Icons-class.html>
+<https://api.flutter.dev/flutter/widgets/IconData-class.html>
+<https://api.flutter.dev/flutter/material/InkWell-class.html>
+<https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html>
+<https://api.flutter.dev/flutter/widgets/Wrap-class.html>
+<https://api.flutter.dev/flutter/widgets/Opacity-class.html>
+<https://api.flutter.dev/flutter/material/Theme-class.html>
+<https://api.dart.dev/stable/2.4.0/dart-core/Iterable-class.html>
+<https://dart.dev/guides/language/language-tour#generics>
+<https://api.flutter.dev/flutter/widgets/Navigator-class.html>
+
+Video 5.3:
+<https://dart.dev/guides/language/language-tour#typedefs>
+
+Video 5.4:
+<https://api.flutter.dev/flutter/material/FloatingActionButton-class.html>
+<https://api.flutter.dev/flutter/material/Scaffold-class.html>
+<https://api.flutter.dev/flutter/material/Checkbox-class.html>
+<https://api.flutter.dev/flutter/widgets/FormField-class.html> <https://api.flutter.dev/flutter/material/showDatePicker.html>
+<https://pub.dev/packages/intl>
+
+Video 5.5: <https://api.flutter.dev/flutter/material/DropdownButtonFormField-class.html>
+<https://api.flutter.dev/flutter/material/TextFormField-class.html>
+<https://api.flutter.dev/flutter/material/DropdownMenuItem-class.html>
+<https://api.flutter.dev/flutter/material/PopupMenuButton-class.html>
+<https://api.flutter.dev/flutter/material/PopupMenuItem-class.html>
+<https://api.flutter.dev/flutter/widgets/State/initState.html>

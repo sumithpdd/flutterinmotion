@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spend_tracker/pages/icons/icon_holder.dart';
-import 'package:spend_tracker/pages/icons/icons_page.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -46,6 +45,7 @@ class _AccountPageState extends State<AccountPage> {
                 ),
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
+                  return null;
                 },
               ),
               TextFormField(
@@ -56,6 +56,7 @@ class _AccountPageState extends State<AccountPage> {
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
                   if (double.tryParse(value) == null) return 'Invalid number';
+                  return null;
                 },
                 onSaved: (String value) => _data['balance'] = value,
               )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:spend_tracker/pages/index.dart';
 
 class ItemPage extends StatefulWidget {
   ItemPage({@required this.isDeposit});
@@ -12,14 +11,14 @@ class ItemPage extends StatefulWidget {
 class _ItemPageState extends State<ItemPage> {
   Map<String, dynamic> _formData = Map<String, dynamic>();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
- 
+
   DateTime _dateTime = DateTime.now();
   @override
   void initState() {
-    
     super.initState();
     _formData['isDeposit'] = widget.isDeposit;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +46,7 @@ class _ItemPageState extends State<ItemPage> {
                 ),
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
+                  return null;
                 },
                 onSaved: (String value) => _formData['Description'] = value,
               ),
@@ -58,6 +58,7 @@ class _ItemPageState extends State<ItemPage> {
                 validator: (String value) {
                   if (value.isEmpty) return 'Required';
                   if (double.tryParse(value) == null) return 'Invalid number';
+                  return null;
                 },
                 onSaved: (String value) =>
                     _formData['amount'] = double.parse(value),
