@@ -5,13 +5,15 @@ import 'package:spend_tracker/database/db_provider.dart';
 import 'package:spend_tracker/models/balance.dart';
 import 'package:spend_tracker/pages/home/widgets/menu.dart';
 import 'package:spend_tracker/pages/items/item_page.dart';
+import 'package:spend_tracker/routes.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with RouteAware, WidgetsBindingObserver {
   double _withdraw = 0;
   double _deposit = 0;
   double _wHeight = 0;
@@ -24,6 +26,23 @@ class _HomePageState extends State<HomePage> {
     var dbProvider = Provider.of<DbProvider>(context);
     var balance = await dbProvider.getBalance();
     _setHeightBalances(balance);
+    routeObserver.subscribe(this, ModalRoute.of(context));
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    routeObserver.unsubscribe(this);
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      Navigator.pushReplacementNamed(context, '/');
+    }
   }
 
   void _setHeightBalances(Balance balance) {
@@ -143,7 +162,7 @@ class _BarLine extends StatelessWidget {
           color: color,
         ),
         Text(
-         label,
+          label,
         ),
         Text(
           amount,

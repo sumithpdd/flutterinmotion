@@ -5,6 +5,7 @@ import 'package:spend_tracker/database/db_provider.dart';
 import 'package:spend_tracker/models/account.dart';
 import 'package:spend_tracker/models/item.dart';
 import 'package:spend_tracker/models/item_type.dart';
+import 'package:spend_tracker/routes.dart';
 
 class ItemPage extends StatefulWidget {
   ItemPage({@required this.isDeposit});
@@ -13,7 +14,7 @@ class ItemPage extends StatefulWidget {
   _ItemPageState createState() => _ItemPageState();
 }
 
-class _ItemPageState extends State<ItemPage> {
+class _ItemPageState extends State<ItemPage> with RouteAware {
   Map<String, dynamic> _formData = Map<String, dynamic>();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -42,6 +43,21 @@ class _ItemPageState extends State<ItemPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _loadDropDownData();
+    routeObserver.subscribe(this, ModalRoute.of(context));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    routeObserver.unsubscribe(this);
+  }
+
+  void didPopNext() {
+    print('did pop next');
+  }
+
+  void didPushNext() {
+    print('did push next');
   }
 
   @override
@@ -55,7 +71,8 @@ class _ItemPageState extends State<ItemPage> {
               onPressed: () {
                 if (!_formKey.currentState.validate()) return;
                 _formKey.currentState.save();
-                var dbProvider = Provider.of<DbProvider>(context,listen: false);
+                var dbProvider =
+                    Provider.of<DbProvider>(context, listen: false);
                 _formData['date'] = DateFormat('MM/dd/yyyy').format(_dateTime);
                 var item = Item.fromMap(_formData);
                 dbProvider.createItem(item);

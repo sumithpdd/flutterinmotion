@@ -17,6 +17,8 @@ class _AccountPageState extends State<AccountPage> {
   Map<String, dynamic> _data;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _hasChanges = false;
+
   @override
   void initState() {
     super.initState();
@@ -52,6 +54,35 @@ class _AccountPageState extends State<AccountPage> {
       ),
       body: Form(
         key: _formKey,
+        onWillPop: () {
+          if (_hasChanges) {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Confirm'),
+                    content: const Text('Discard Changes?'),
+                    actions: <Widget>[
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('Yes')),
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('No'))
+                    ],
+                  );
+                });
+            return Future.value(false);
+          }
+          return Future.value(true);
+        },
+        // ()=> Future.value(!_hasChanges),
+        onChanged: () => _hasChanges = true,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -59,6 +90,7 @@ class _AccountPageState extends State<AccountPage> {
               IconHolder(
                 newIcon: IconHelper.createIconData(_data['codePoint']),
                 onIconChange: (IconData iconData) {
+                  _hasChanges = true;
                   setState(() {
                     _data['codePoint'] = iconData.codePoint;
                   });

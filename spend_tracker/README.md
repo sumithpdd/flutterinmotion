@@ -143,7 +143,31 @@ Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open so
 <https://sqlitebrowser.org>
 
 6.7:
-https://api.flutter.dev/flutter/widgets/Dismissible-class.html
+<https://api.flutter.dev/flutter/widgets/Dismissible-class.html>
 
 6.8:
 <https://sqlitebrowser.org/>
+
+7.1:
+<https://api.flutter.dev/flutter/widgets/GridView-class.html> <https://api.flutter.dev/flutter/dart-core/List-class.html> <https://api.flutter.dev/flutter/widgets/Table-class.html> <https://api.flutter.dev/flutter/rendering/TableBorder-class.html> <https://api.flutter.dev/flutter/rendering/TableColumnWidth-class.html> <https://github.com/cornell19/more_widgets>
+
+7.2:
+<https://api.flutter.dev/flutter/widgets/Stack-class.html> <https://github.com/cornell19/more_widgets> <https://api.flutter.dev/flutter/widgets/Positioned-class.html>
+
+7.3:
+<https://github.com/cornell19/more_widgets> <https://github.com/cornell19/images> <https://api.flutter.dev/flutter/widgets/ClipPath-class.html> <https://api.flutter.dev/flutter/rendering/CustomClipper-class.html> <https://api.flutter.dev/flutter/rendering/ShapeBorderClipper-class.html> <https://api.flutter.dev/flutter/widgets/ClipRRect-class.html> <https://api.flutter.dev/flutter/widgets/ClipOval-class.html> <https://api.flutter.dev/flutter/widgets/ClipRect-class.html> <https://flutter.dev/docs/development/ui/assets-and-images#from-packages>
+
+7.4:
+<https://github.com/cornell19/more_widgets> <https://api.flutter.dev/flutter/material/Scaffold-class.html> <https://api.flutter.dev/flutter/material/ScaffoldState-class.html> <https://api.flutter.dev/flutter/material/SnackBar-class.html> <https://api.flutter.dev/flutter/dart-core/Duration-class.html> <https://api.flutter.dev/flutter/material/SnackBarAction-class.html> <https://api.flutter.dev/flutter/material/RaisedButton-class.html>
+
+7.5:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/OrientationBuilder-class.html> <https://api.flutter.dev/flutter/services/SystemChrome-class.html>
+
+7.6:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/WillPopScope-class.html> <https://api.flutter.dev/flutter/material/AlertDialog-class.html> <https://api.flutter.dev/flutter/material/showDialog.html> <https://api.flutter.dev/flutter/widgets/Form-class.html>
+
+7.7:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/RouteObserver-class.html> <https://api.flutter.dev/flutter/widgets/RouteAware-class.html>
+
+7.8:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/WidgetsBinding/instance.html> <https://api.flutter.dev/flutter/widgets/WidgetsBinding-mixin.html> <https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver-class.html> <https://api.flutter.dev/flutter/dart-ui/AppLifecycleState-class.html>
