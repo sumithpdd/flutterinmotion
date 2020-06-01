@@ -20,8 +20,7 @@ class _HomePageState extends State<HomePage>
   double _dHeight = 0;
   double _balance = 0;
   double _opacity = 0.2;
-  Color _color = Colors.red;
-  double _height = 0;
+  double _fontSize = 0;
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
@@ -71,8 +70,7 @@ class _HomePageState extends State<HomePage>
       _deposit = balance.deposit;
       _balance = balance.total;
       _opacity = 1.0;
-      _color = Colors.blue;
-      _height = 100;
+      _fontSize = 40;
     });
   }
 
@@ -95,11 +93,13 @@ class _HomePageState extends State<HomePage>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          AnimatedContainer(
-              color: _color,
-              height: _height,
+          AnimatedOpacity(
+              opacity: _opacity,
               duration: Duration(seconds: 4),
-              child: _TotalBudget(amount: formatter.format(_balance))),
+              child: _TotalBudget(
+                amount: formatter.format(_balance),
+                fontSize: _fontSize,
+              )),
           Container(
             padding: EdgeInsets.only(bottom: 50),
             height: MediaQuery.of(context).size.height - 200,
@@ -185,21 +185,25 @@ class _TotalBudget extends StatelessWidget {
   const _TotalBudget({
     Key key,
     @required this.amount,
+    @required this.fontSize,
   }) : super(key: key);
 
   final String amount;
-
+  final double fontSize;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       margin: EdgeInsets.all(10),
       alignment: Alignment.center,
-      child: Text(
-        amount,
+      child: AnimatedDefaultTextStyle(
+        duration: Duration(seconds: 3),
         style: TextStyle(
           color: Colors.white,
-          fontSize: 40,
+          fontSize: fontSize,
+        ),
+        child: Text(
+          '\$$amount',
         ),
       ),
       decoration: BoxDecoration(

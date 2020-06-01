@@ -13,12 +13,15 @@ class AccountPage extends StatefulWidget {
   _AccountPageState createState() => _AccountPageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _AccountPageState extends State<AccountPage>
+    with TickerProviderStateMixin {
   Map<String, dynamic> _data;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _hasChanges = false;
-
+  AnimationController _controller;
+  Animation<Offset> _animationName;
+  Animation<Offset> _animationBalance;
   @override
   void initState() {
     super.initState();
@@ -28,6 +31,21 @@ class _AccountPageState extends State<AccountPage> {
       _data = Map<String, dynamic>();
       _data['codePoint'] = Icons.add.codePoint;
     }
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+    _animationName = Tween<Offset>(begin: Offset(-3, 0), end: Offset(0, 0))
+        .animate(_controller);
+    _animationBalance = Tween<Offset>(begin: Offset(-3, 0), end: Offset(0, 0))
+        .animate(_controller);
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller?.dispose();
   }
 
   @override
@@ -97,32 +115,39 @@ class _AccountPageState extends State<AccountPage> {
                   });
                 },
               ),
-              TextFormField(
-                initialValue: widget.account != null ? widget.account.name : '',
-                decoration: InputDecoration(
-                  labelText: 'Name',
+              SlideTransition(
+                position: _animationName,
+                child: TextFormField(
+                  initialValue:
+                      widget.account != null ? widget.account.name : '',
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                  ),
+                  validator: (String value) {
+                    if (value.isEmpty) return 'Required';
+                    return null;
+                  },
+                  onSaved: (String value) => _data['name'] = value,
                 ),
-                validator: (String value) {
-                  if (value.isEmpty) return 'Required';
-                  return null;
-                },
-                onSaved: (String value) => _data['name'] = value,
               ),
-              TextFormField(
-                initialValue: widget.account != null
-                    ? widget.account.balance.toString()
-                    : '',
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(
-                  labelText: 'Balance',
+              SlideTransition(
+                position: _animationBalance,
+                child: TextFormField(
+                  initialValue: widget.account != null
+                      ? widget.account.balance.toString()
+                      : '',
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                    labelText: 'Balance',
+                  ),
+                  validator: (String value) {
+                    if (value.isEmpty) return 'Required';
+                    if (double.tryParse(value) == null) return 'Invalid number';
+                    return null;
+                  },
+                  onSaved: (String value) =>
+                      _data['balance'] = double.parse(value),
                 ),
-                validator: (String value) {
-                  if (value.isEmpty) return 'Required';
-                  if (double.tryParse(value) == null) return 'Invalid number';
-                  return null;
-                },
-                onSaved: (String value) =>
-                    _data['balance'] = double.parse(value),
               )
             ],
           ),
