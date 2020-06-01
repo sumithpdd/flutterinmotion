@@ -35,11 +35,24 @@ class _AccountPageState extends State<AccountPage>
       vsync: this,
       duration: Duration(milliseconds: 500),
     );
-    _animationName = Tween<Offset>(begin: Offset(-3, 0), end: Offset(0, 0))
-        .animate(_controller);
-    _animationBalance = Tween<Offset>(begin: Offset(-3, 0), end: Offset(0, 0))
-        .animate(_controller);
-    _controller.forward();
+    _animationName = Tween<Offset>(
+      begin: Offset(-3, 0),
+      end: Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Interval(0.50, 1.0, curve: Curves.easeInOutBack),
+      ),
+    );
+    _animationBalance = Tween<Offset>(
+      begin: Offset(-3, 0),
+      end: Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Interval(0.50, 1.0, curve: Curves.easeInOutBack),
+      ),
+    );
   }
 
   @override
