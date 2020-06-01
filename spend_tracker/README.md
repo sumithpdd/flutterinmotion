@@ -171,3 +171,31 @@ Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open so
 
 7.8:
 <https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/WidgetsBinding/instance.html> <https://api.flutter.dev/flutter/widgets/WidgetsBinding-mixin.html> <https://api.flutter.dev/flutter/widgets/WidgetsBindingObserver-class.html> <https://api.flutter.dev/flutter/dart-ui/AppLifecycleState-class.html>
+
+8.1:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/Hero-class.html>
+
+8.2:
+<https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html>
+<https://api.flutter.dev/flutter/dart-core/Duration-class.html>
+<https://api.flutter.dev/flutter/widgets/AnimatedOpacity-class.html>
+<https://api.flutter.dev/flutter/widgets/AnimatedContainer-class.html>
+<https://api.flutter.dev/flutter/widgets/AnimatedDefaultTextStyle-class.html>
+
+8.3:
+<https://api.flutter.dev/flutter/widgets/AnimatedWidget-class.html>
+<https://api.flutter.dev/flutter/widgets/SingleTickerProviderStateMixin-mixin.html>
+<https://api.flutter.dev/flutter/animation/AnimationController-class.html>
+<https://api.flutter.dev/flutter/animation/Animation-class.html>
+<https://api.flutter.dev/flutter/animation/Curves-class.html>
+<https://api.flutter.dev/flutter/animation/AnimationController-class.html>
+<https://api.flutter.dev/flutter/dart-ui/Offset-class.html>
+<https://api.flutter.dev/flutter/widgets/SlideTransition-class.html>
+<https://api.flutter.dev/flutter/animation/CurvedAnimation-class.html>
+<https://api.flutter.dev/flutter/animation/Interval-class.html>
+
+8.4:
+<https://github.com/cornell19/spend_tracker> <https://api.flutter.dev/flutter/widgets/AnimatedBuilder-class.html>
+
+8.5:
+<https://github.com/cornell19/images> <https://flutter.dev/docs/development/ui/animations> <https://api.flutter.dev/flutter/widgets/Transform-class.html> <https://github.com/cornell19/images/blob/master/cat_dog.png> <https://dart.dev/guides/language/language-tour#cascade-notation->

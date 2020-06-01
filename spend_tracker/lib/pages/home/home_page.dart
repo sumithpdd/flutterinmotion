@@ -67,12 +67,13 @@ class _HomePageState extends State<HomePage>
   }
 
   void didPopNext() {
-    print('did pop next');
+    _animationController.forward();
   }
 
   void didPushNext() {
     _animationController.reset();
   }
+
   void _setHeightBalances(Balance balance) {
     var maxAmount =
         balance.withdraw > balance.deposit ? balance.withdraw : balance.deposit;
