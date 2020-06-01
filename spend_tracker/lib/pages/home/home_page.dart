@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage>
   double _dHeight = 0;
   double _balance = 0;
   double _opacity = 0.2;
+  Color _color = Colors.red;
+  double _height = 0;
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
@@ -69,6 +71,8 @@ class _HomePageState extends State<HomePage>
       _deposit = balance.deposit;
       _balance = balance.total;
       _opacity = 1.0;
+      _color = Colors.blue;
+      _height = 100;
     });
   }
 
@@ -91,8 +95,9 @@ class _HomePageState extends State<HomePage>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          AnimatedOpacity(
-              opacity: _opacity,
+          AnimatedContainer(
+              color: _color,
+              height: _height,
               duration: Duration(seconds: 4),
               child: _TotalBudget(amount: formatter.format(_balance))),
           Container(
