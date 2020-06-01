@@ -50,7 +50,7 @@ class _AccountPageState extends State<AccountPage>
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Interval(0.50, 1.0, curve: Curves.easeInOutBack),
+        curve: Interval(0.0, 0.5, curve: Curves.easeInOutBack),
       ),
     );
   }
