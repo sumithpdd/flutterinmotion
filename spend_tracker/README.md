@@ -213,3 +213,33 @@ The pattern is supported in many languages. Streams are like a water hose – at
 
 9.4:
 <https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html>
+
+To help with creating launch icons, there is a flutter_launcher_icons package at the pub.dev.
+This package helps us create the icons for the different platforms and OS versions. Let's set up the package. In our pubspec.yaml file, find the dev_dependencies section and add the reference to the flutter_launcher_icons. The dev_dependency allows us to add packages that are only needed during development.
+
+ Now we can run the command flutter pub pub run flutter_launcher_icons:main.
+
+Congratulations, you’ve reached the end of the course!
+
+10.1:
+<https://flutter.dev/docs/deployment/android> <https://developer.android.com/guide/topics/manifest/manifest-intro> <https://github.com/cornell19/icon_and_splash_screen> <https://pub.dev/packages/flutter_launcher_icons> <https://developer.android.com/guide>
+
+10.2.:
+<https://flutter.dev/docs/deployment/android> <https://developer.android.com/studio/publish/app-signing> <https://developer.android.com/distribute/console> <https://play.google.com/store/apps>
+
+10.3:
+<https://developer.apple.com> <https://flutter.dev/docs/deployment/ios> <https://flutter.dev/docs/get-started/install/macos>
+
+10.4:
+<https://developer.apple.com/programs/> <https://flutter.dev/docs/deployment/ios> <https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html> <https://developer.apple.com/support/code-signing/> <https://developer.apple.com/app-store/review/>
+
+10.5:
+<https://aqueduct.io>
+<https://github.com/google/flutter-desktop-embedding>
+<https://github.com/flutter/flutter/wiki/Desktop-shells>
+<https://flutter.dev/web>
+<https://flutter.github.io/samples/>
+<https://flutter.dev/community>
+<https://www.manning.com/books/flutter-in-action>
+<https://www.manning.com/books/dart-in-action>
+<https://dart.dev>
