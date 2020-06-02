@@ -52,6 +52,15 @@ class Menu extends StatelessWidget {
               height: 20,
               color: Colors.black,
             ),
+            _MenuItem(
+              title: 'Logout',
+              icon: Icons.security,
+              color: color,
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacementNamed("/");
+              },
+            ),
           ],
         ),
       ),

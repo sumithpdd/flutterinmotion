@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage>
       });
       return;
     }
-    var maxHeight = MediaQuery.of(context).size.height - 284;
+    var maxHeight = MediaQuery.of(context).size.height - 350;
     var wHeight = (balance.withdraw / maxAmount) * maxHeight;
     var dHeight = (balance.deposit / maxAmount) * maxHeight;
     setState(() {

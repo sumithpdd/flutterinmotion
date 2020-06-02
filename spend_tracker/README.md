@@ -199,3 +199,8 @@ Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open so
 
 8.5:
 <https://github.com/cornell19/images> <https://flutter.dev/docs/development/ui/animations> <https://api.flutter.dev/flutter/widgets/Transform-class.html> <https://github.com/cornell19/images/blob/master/cat_dog.png> <https://dart.dev/guides/language/language-tour#cascade-notation->
+
+### RxDart
+
+ReactiveX is an API for asynchronous programming with observable streams. As the website says, "ReactiveX is a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming."
+The pattern is supported in many languages. Streams are like a water hose – at one end is our entry point, and the other end is the Observable. In between is the stream. As data is added to the stream, one or more Observers can receive the data and react to it. Henceforth, the term ReactiveX. If there is no Observer, the data drops off the stream.
