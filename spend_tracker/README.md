@@ -204,3 +204,12 @@ Navigate over to the site sqlitebrowser.org. DB Browser for SQLite is an open so
 
 ReactiveX is an API for asynchronous programming with observable streams. As the website says, "ReactiveX is a combination of the best ideas from the Observer pattern, the Iterator pattern, and functional programming."
 The pattern is supported in many languages. Streams are like a water hose – at one end is our entry point, and the other end is the Observable. In between is the stream. As data is added to the stream, one or more Observers can receive the data and react to it. Henceforth, the term ReactiveX. If there is no Observer, the data drops off the stream.
+
+9.1:
+<https://firebase.google.com/> <https://www.getpostman.com/> <https://firestore.googleapis.com/v1/projects/> [your firebase project id]/databases/(default)/documents/account <https://github.com/cornell19/spend_tracker> <https://www.getpostman.com/pricing>
+
+9.2:
+<http://reactivex.io> <http://reactivex.io/languages.html> <https://api.flutter.dev/flutter/dart-async/Stream-class.html> <https://pub.dev/packages/rxdart> <https://pub.dev/packages/http>
+
+9.4:
+<https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html>
