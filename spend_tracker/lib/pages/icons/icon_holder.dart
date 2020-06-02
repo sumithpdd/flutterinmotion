@@ -8,12 +8,14 @@ class IconHolder extends StatelessWidget {
     Key key,
     @required this.newIcon,
     @required this.onIconChange,
-    @required this.tagId,
+    this.tagId,
+    this.tagUrlId,
   }) : super(key: key);
 
   final IconData newIcon;
   final OnIconChange onIconChange;
-  final int tagId;
+  final String tagId;
+  final String tagUrlId;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -24,16 +26,20 @@ class IconHolder extends StatelessWidget {
             builder: (context) => IconsPage(),
           ),
         );
+
         onIconChange(iconData);
       },
       child: Container(
         height: 100,
         width: 100,
         decoration: BoxDecoration(
-          border: Border.all(width: 2, color: Colors.blueGrey),
+          border: Border.all(
+            width: 2,
+            color: Colors.blueAccent,
+          ),
         ),
         child: Hero(
-          tag: tagId,
+          tag: tagId == null ? tagUrlId : tagId,
           child: Icon(
             newIcon == null ? Icons.add : newIcon,
             size: 60,

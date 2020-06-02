@@ -8,19 +8,15 @@ import 'package:spend_tracker/routes.dart';
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<DbProvider>(
-      create: (_) => DbProvider(),
+    return Provider<FirebaseBloc>(
+      create: (_) => FirebaseBloc(apis: Apis()),
       dispose: (_, value) => value.dispose(),
-      child: Provider<FirebaseBloc>(
-        create: (_) => FirebaseBloc(apis: Apis()),
-        dispose: (_, value) => value.dispose(),
-        child: MaterialApp(
-          title: 'Spend Tracker',
-          theme: ThemeData(primarySwatch: Colors.green),
-          initialRoute: '/',
-          routes: routes,
-          navigatorObservers: [routeObserver],
-        ),
+      child: MaterialApp(
+        title: 'Spend Tracker',
+        theme: ThemeData(primarySwatch: Colors.green),
+        initialRoute: '/',
+        routes: routes,
+        navigatorObservers: [routeObserver],
       ),
     );
   }

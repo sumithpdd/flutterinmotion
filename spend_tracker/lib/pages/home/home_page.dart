@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:spend_tracker/database/db_provider.dart';
+import 'package:spend_tracker/firebase/firebase_bloc.dart';
 import 'package:spend_tracker/models/balance.dart';
 import 'package:spend_tracker/pages/home/widgets/menu.dart';
 import 'package:spend_tracker/pages/items/item_page.dart';
@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with RouteAware, WidgetsBindingObserver, TickerProviderStateMixin {
-  AnimationController _animationController;
+  AnimationController _controller;
   Animation<double> _animation;
   double _withdraw = 0;
   double _deposit = 0;
@@ -27,25 +27,19 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
+    _controller = AnimationController(
       vsync: this,
-      duration: Duration(
-        seconds: 1,
-      ),
+      duration: Duration(seconds: 1),
     );
-    _animation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(_animationController);
-    _animationController.forward();
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+    _controller.forward();
   }
 
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
-    var dbProvider = Provider.of<DbProvider>(context);
-    var balance = await dbProvider.getBalance();
-    _setHeightBalances(balance);
+
+    _setHeightBalances();
     routeObserver.subscribe(this, ModalRoute.of(context));
     WidgetsBinding.instance.addObserver(this);
   }
@@ -55,29 +49,32 @@ class _HomePageState extends State<HomePage>
     super.dispose();
     routeObserver.unsubscribe(this);
     WidgetsBinding.instance.removeObserver(this);
-    _animationController.dispose();
+    _controller?.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    if (state == AppLifecycleState.resumed) {
+    if (state == AppLifecycleState.resumed)
       Navigator.pushReplacementNamed(context, '/');
-    }
   }
 
+  @override
   void didPopNext() {
-    _animationController.forward();
+    _setHeightBalances();
+    _controller.forward();
   }
 
+  @override
   void didPushNext() {
-    _animationController.reset();
+    _controller.reset();
   }
 
-  void _setHeightBalances(Balance balance) {
+  void _setHeightBalances() {
+    var bloc = Provider.of<FirebaseBloc>(context,listen:false);
+    Balance balance = bloc.balance;
+
     var maxAmount =
         balance.withdraw > balance.deposit ? balance.withdraw : balance.deposit;
-
     if (maxAmount == 0) {
       setState(() {
         _wHeight = 0;
@@ -88,7 +85,7 @@ class _HomePageState extends State<HomePage>
       });
       return;
     }
-    var maxHeight = MediaQuery.of(context).size.height - 350;
+    var maxHeight = MediaQuery.of(context).size.height - 304;
     var wHeight = (balance.withdraw / maxAmount) * maxHeight;
     var dHeight = (balance.deposit / maxAmount) * maxHeight;
     setState(() {
@@ -104,7 +101,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    var formatter = NumberFormat("#,##0.00", "en-US");
+    var formatter = NumberFormat("#,##0.00", "en_US");
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -113,45 +111,34 @@ class _HomePageState extends State<HomePage>
             icon: Icon(Icons.add),
             tooltip: 'add',
             onPressed: () => print('click'),
-          ),
+          )
         ],
       ),
       drawer: Menu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           AnimatedOpacity(
-              opacity: _opacity,
-              duration: Duration(seconds: 4),
-              child: _TotalBudget(
-                amount: formatter.format(_balance),
-                fontSize: _fontSize,
-              )),
-          Container(
-            padding: EdgeInsets.only(bottom: 50),
-            height: MediaQuery.of(context).size.height - 200,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _BarLine(
-                  _wHeight,
-                  Colors.red,
-                  'Withdraw',
-                  formatter.format(_withdraw),
-                  _animation,
-                ),
-                _BarLine(
-                  _dHeight,
-                  Colors.green,
-                  'Deposit',
-                  formatter.format(_deposit),
-                  _animation,
-                ),
-              ],
+            opacity: _opacity,
+            duration: Duration(seconds: 4),
+            child: _TotalBudget(
+              fontSize: _fontSize,
+              amount: formatter.format(_balance),
             ),
-          )
+          ),
+          Container(
+              padding: EdgeInsets.only(bottom: 50),
+              height: MediaQuery.of(context).size.height - 220,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  _BarLine(_wHeight, Colors.red, 'Withdraw',
+                      formatter.format(_withdraw), _animation),
+                  _BarLine(_dHeight, Colors.green, 'Deposit',
+                      formatter.format(_deposit), _animation)
+                ],
+              )),
         ],
       ),
       floatingActionButton: PopupMenuButton(
@@ -168,15 +155,16 @@ class _HomePageState extends State<HomePage>
           PopupMenuItem(
             value: 2,
             child: const Text('Withdraw'),
-          ),
+          )
         ],
         onSelected: (int value) {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (_) => ItemPage(
-                      isDeposit: value == 1,
-                    )),
+              builder: (_) => ItemPage(
+                isDeposit: value == 1,
+              ),
+            ),
           );
         },
       ),
@@ -206,21 +194,16 @@ class _BarLine extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         AnimatedBuilder(
-          animation: animation,
-          builder: (_, __) {
-            return Container(
-              height: animation.value * height,
-              width: 100,
-              color: color,
-            );
-          },
-        ),
-        Text(
-          label,
-        ),
-        Text(
-          amount,
-        ),
+            animation: animation,
+            builder: (_, __) {
+              return Container(
+                height: animation.value * height,
+                width: 100,
+                color: color,
+              );
+            }),
+        Text(label),
+        Text(amount),
       ],
     );
   }
@@ -264,10 +247,7 @@ class _TotalBudget extends StatelessWidget {
           stops: [0.85, 0.95, 1.0],
         ),
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(4, 4),
-          ),
+          BoxShadow(color: Colors.grey, offset: Offset(4, 4)),
         ],
         borderRadius: BorderRadius.all(
           Radius.circular(5),
